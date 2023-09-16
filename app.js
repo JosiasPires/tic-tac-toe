@@ -1,10 +1,29 @@
+const game = (
+    () => {
+        console.log('hey')
+        const reset = '--';
+        const start = () => {
+            for (let i = 0; i < 9; i++) {
+                gameBoard.cells[i].textContent = gameBoard.board[i];
+            }
+        };
+        const state = 0;
+        const mark = '--';
+        const displayWinner = (winner) => {
+            document.querySelector('winner').textContent = winner;
+        };
+        return {reset, start, mark, displayWinner}
+    }
+)();
+
 const gameBoard = (
     () => {
-        const board = Array.from(document.querySelectorAll('.cell'));
-        for (let cell of board) {
-            cell.addEventListener('click', game.mark);
+        const board = ['X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O'];
+        const cells = Array.from(document.querySelectorAll('.cell'));
+        for (let cell of cells) {
+            // cell.addEventListener('click', game.mark);
         }
-        return {board}
+        return {board, cells}
     }
 )();
 
@@ -18,15 +37,4 @@ const Player = function(name, marker) {
     return {name, marker, mark};
 }
 
-const game = (
-    () => {
-        const reset = '--';
-        const start = '--';
-        const state = 0;
-        const mark = '--';
-        const displayWinner = (winner) => {
-            document.querySelector('winner').textContent = winner;
-        };
-        return {reset, start, mark, displayWinner}
-    }
-)();
+game.start();
