@@ -1,6 +1,8 @@
 const game = (
     () => {
-        console.log('hey')
+        const dialog = document.querySelector('.congratBox');
+        const winnerSpan = document.querySelector('.winner');
+        const congratMessage = document.querySelector('.congratMessage');
         const reset = '--';
         const displayBoard = () => {
             for (let i = 0; i < 9; i++) {
@@ -19,12 +21,54 @@ const game = (
                     state = 0;
                 }
             }
+            checkWinner();
         };
-        
+        const checkWinner = () => {
+            let winner = false;
+            let board = gameBoard.board;
+            for (let player of players) {
+                let marker = player.marker;
+                // Horizontal check
+                for (let i = 0; i < 9; i++) {
+                    if (board[i] == marker && board[i+1] == marker && board[i+2] == marker) {
+                        winner = player;
+                    }
+                }
+                // Vertical check
+                for (let i = 0; i < 3; i++) {
+                    if (board[i] == marker && board[i+3] == marker && board[i+6] == marker) {
+                        winner = player;
+                    }
+                }
+                // Backslash check
+                if (board[0] == marker && board[4] == marker && board[8] == marker) {
+                    winner = player;
+                }
+                // Slash check
+                else if (board[2] == marker && board[4] == marker && board[6] == marker) {
+                    winner = player;
+                }
+            }
+            if (winner) {
+                winnerSpan.textContent = winner.name;
+                dialog.showModal();
+            }
+            else {
+                // Check tie
+                let tie = true;
+                for (let cell of board) {
+                    if (cell == '') tie = false;
+                }
+                if (tie) {
+                    congratMessage.textContent = "It's a tie!";
+                    dialog.showModal();
+                }
+            }
+        }
         const displayWinner = (winner) => {
             document.querySelector('winner').textContent = winner;
         };
-        return {reset, displayBoard, mark, displayWinner};
+        return {reset, displayBoard, mark, displayWinner, checkWinner};
     }
 )();
 
