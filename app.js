@@ -1,9 +1,14 @@
 const game = (
     () => {
-        const dialog = document.querySelector('.congratBox');
+        const congratBox = document.querySelector('.congratBox');
         const winnerSpan = document.querySelector('.winner');
         const congratMessage = document.querySelector('.congratMessage');
-        const reset = '--';
+        const reset = () => {
+            for (let i = 0; i < gameBoard.board.length; i++) {
+                gameBoard.board[i] = '';
+            }
+            displayBoard();
+        };
         const displayBoard = () => {
             for (let i = 0; i < 9; i++) {
                 gameBoard.cells[i].textContent = gameBoard.board[i];
@@ -51,7 +56,7 @@ const game = (
             }
             if (winner) {
                 winnerSpan.textContent = winner.name;
-                dialog.showModal();
+                congratBox.showModal();
             }
             else {
                 // Check tie
@@ -61,7 +66,7 @@ const game = (
                 }
                 if (tie) {
                     congratMessage.textContent = "It's a tie!";
-                    dialog.showModal();
+                    congratBox.showModal();
                 }
             }
         }
