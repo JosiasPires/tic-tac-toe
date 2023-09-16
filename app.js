@@ -1,9 +1,6 @@
 const gameBoard = (
     () => {
-        const board = [];
-        for (let i = 0; i < 9; i++) {
-            board.push(null);
-        }
+        const board = Array.from(document.querySelectorAll('.cell'));
         return {board}
     }
 )();
