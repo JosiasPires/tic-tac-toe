@@ -8,3 +8,14 @@ const gameBoard = (
     }
 )();
 
+const Player = function(name, marker) {
+    const mark = function(cell) {
+        if (cell.textContent == '') {
+            cell.textContent = marker;
+            gameBoard.board[Number(cell.getAttribute('data-position'))] = marker;
+        }
+    }
+    return {name, marker, mark};
+}
+
+
