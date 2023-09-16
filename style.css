@@ -3,3 +3,39 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    height: 100vh;
+    background-color: gainsboro;
+    display: grid;
+    place-content: center;
+}
+
+.grid {
+    width: 35rem;
+    height: 35rem;
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.cell {
+    background-color: gainsboro;
+    display: grid;
+    place-content: center;
+    font-family: monospace;
+    font-size: 5rem;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    transition: 100ms;
+}
+
+.cell:empty:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+}
