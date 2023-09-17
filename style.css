@@ -10,9 +10,10 @@ body {
     display: grid;
     place-content: center;
     font-family: monospace;
+    padding: 1rem;
 }
 
-.congratBox {
+.dialog {
     position: absolute;
     margin: auto;
     top: 2rem;
@@ -21,7 +22,34 @@ body {
     z-index: 1;
 }
 
-.congratBox button {
+.startBox form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.startBox div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.startBox label {
+    border-bottom: 1px solid black;
+    width: fit-content;
+    padding: 4px;
+}
+
+.startBox input {
+    padding: 0.5rem;
+}
+
+.dialog button {
+    padding: 0.5rem 1rem;
+}
+
+.restart {
+    position: absolute;
     padding: 0.5rem 1rem;
 }
 
@@ -35,6 +63,10 @@ body {
     gap: 4px;
     border-radius: 8px;
     overflow: hidden;
+}
+
+.disabled {
+    pointer-events: none;    
 }
 
 .cell {

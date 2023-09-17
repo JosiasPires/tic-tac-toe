@@ -8,12 +8,29 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <dialog class="congratBox">
+    <dialog class="dialog startBox" open>
+        <h2>New Game</h2>
+        <form method="dialog">
+            <div>
+                <label for="player1">Player 1</label>
+                <input type="text" id="player1" placeholder="John Doe">
+            </div>
+            <div>
+                <label for="player2">Player 2</label>
+                <input type="text" id="player2" placeholder="John Doe">
+            </div>
+            <button id="start">Start Game</button>
+            <button id="cancel">Cancel</button>
+        </form>
+    </dialog>
+    <dialog class="dialog congratBox">
         <p class="congratMessage">Congrats! The winner is <span class="winner">{winner}</span></p>
         <form method="dialog">
             <button>Close</button>
+            <button class="againBtn">New Game</button>
         </form>
     </dialog>
+    <button class="restart">Restart</button>
     <div class="grid">
         <div class="cell" data-position="0"></div>
         <div class="cell" data-position="1"></div>
