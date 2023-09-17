@@ -26,6 +26,7 @@ const game = (
                 p2 = Player(player2, 'O');
             }
             players = [p1, p2];
+            gameBoard.grid.setAttribute('class', 'grid');
         };
         const displayBoard = () => {
             for (let i = 0; i < 9; i++) {
@@ -114,11 +115,15 @@ const dialog = (
         const startBox = document.querySelector('.startBox');
         const againBtn = document.querySelector('.againBtn')
         const cancelStart = document.querySelector('#cancel');
+        const closeBtn = document.querySelector('#closeBtn');
         const winnerSpan = document.querySelector('.winner');
         const congratMessage = document.querySelector('.congratMessage');
         const player1 = document.querySelector('#player1');
         const player2 = document.querySelector('#player2');
         const startBtn = document.querySelector('#start');
+        closeBtn.addEventListener('click', () => {
+            gameBoard.grid.setAttribute('class', 'grid disabled');
+        })
         startBtn.addEventListener('click', e => {
             e.preventDefault();
             game.reset();
@@ -148,14 +153,9 @@ const gameBoard = (
         const grid = document.querySelector('.grid');
         const cells = Array.from(document.querySelectorAll('.cell'));
         for (let cell of cells) {
-            cell.addEventListener('click', () => {
-                if (game.winner || game.tie) {
-                    grid.setAttribute('class', 'grid disabled');
-                }
-            })
             cell.addEventListener('click', game.mark);
         }
-        return {board, cells}
+        return {board, cells, grid}
     }
 )();
 
