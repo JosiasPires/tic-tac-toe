@@ -55,7 +55,7 @@ const game = (
             for (let player of players) {
                 let marker = player.marker;
                 // Horizontal check
-                for (let i = 0; i < 9; i++) {
+                for (let i = 0; i < 9; i += 3) {
                     if (board[i] == marker && board[i+1] == marker && board[i+2] == marker) {
                         winner = player;
                     }
